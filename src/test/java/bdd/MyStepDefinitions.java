@@ -4,9 +4,11 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 import java.util.Map;
@@ -50,11 +52,15 @@ public class MyStepDefinitions {
 
     @Given("I'm a guest customer")
     public void iMAGuestCustomer() {
+        System.setProperty("webdriver.chrome.driver", "/home/shanky/Personal/Online Course/Testing/Driver_File/chromedriver");
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("https://askomdch.com");
+        System.out.println(driver.getCurrentUrl());
     }
 
     @And("I have a product in the Cart")
     public void iHaveAProductInTheCart() throws InterruptedException {
-        driver.get("https://askomdch.com");
         By addingToCart = By.cssSelector("a[aria-label='Add “Blue Shoes” to your cart']");
         driver.findElement(addingToCart).click();
         By viewCart = By.cssSelector("a[title='View cart']");
@@ -73,35 +79,47 @@ public class MyStepDefinitions {
     public void iProvideBillingDetails(List<Map<String, String>> billingDetails) {
 
         By firstNameId = By.id("billing_first_name");
-        By lastNameId = By.id("billing_last_name_field");
+        By lastNameId = By.id("billing_last_name");
         By addressId = By.id("billing_address_1");
         By cityId = By.id("billing_city");
-        By stateId = By.id("select2-billing_state-container")
+        By stateId = By.id("billing_state");
         By zipId = By.id("billing_postcode");
         By emailId = By.id("billing_email");
 
         driver.findElement(firstNameId).clear();
         driver.findElement(firstNameId).sendKeys(billingDetails.get(0).get("firstname"));
+
         driver.findElement(lastNameId).clear();
         driver.findElement(lastNameId).sendKeys(billingDetails.get(0).get("lastname"));
+
         driver.findElement(addressId).clear();
         driver.findElement(addressId).sendKeys(billingDetails.get(0).get("address"));
+
         driver.findElement(cityId).clear();
         driver.findElement(cityId).sendKeys(billingDetails.get(0).get("city"));
-        driver.findElement(stateId).clear();
-        driver.findElement(stateId).sendKeys(billingDetails.get(0).get("state"));
+
+        Select select = new Select(driver.findElement(stateId));
+        select.selectByVisibleText(billingDetails.get(0).get("state"));
+
         driver.findElement(zipId).clear();
         driver.findElement(zipId).sendKeys(billingDetails.get(0).get("zip"));
+
         driver.findElement(emailId).clear();
         driver.findElement(emailId).sendKeys(billingDetails.get(0).get("email"));
 
     }
 
     @And("I place an order")
-    public void iPlaceAnOrder() {
+    public void iPlaceAnOrder() throws InterruptedException {
+        By placeOrderBtn = By.id("place_order");
+        driver.findElement(placeOrderBtn).click();
+        sleep(10000);
     }
 
     @Then("The order should be placed successfully")
     public void theOrderShouldBePlacedSuccessfully() {
+        By successTxt = By.cssSelector(".woocommerce-notice");
+        String actualMsg = driver.findElement(successTxt).getText();
+        Assert.assertEquals("Thank you. Your order has been received.",actualMsg);
     }
 }
