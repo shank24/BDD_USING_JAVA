@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
 
 public class MyStepDefinitions {
 
-    private WebDriver driver;
+    private static WebDriver driver;
     @Given("I'm on the Store page")
     public void i_m_on_the_store_page() {
         System.setProperty("webdriver.chrome.driver", "/home/shanky/Personal/Online Course/Testing/Driver_File/chromedriver");
@@ -52,11 +52,7 @@ public class MyStepDefinitions {
 
     @Given("I'm a guest customer")
     public void iMAGuestCustomer() {
-        System.setProperty("webdriver.chrome.driver", "/home/shanky/Personal/Online Course/Testing/Driver_File/chromedriver");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
         driver.get("https://askomdch.com");
-        System.out.println(driver.getCurrentUrl());
     }
 
     @And("I have a product in the Cart")
