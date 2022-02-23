@@ -1,5 +1,6 @@
 package bdd;
 
+import bdd.factory.DriverFactory;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -18,14 +19,11 @@ import static org.junit.Assert.*;
 
 public class MyStepDefinitions {
 
-    private static WebDriver driver;
+    private WebDriver driver;
     @Given("I'm on the Store page")
     public void i_m_on_the_store_page() {
-        System.setProperty("webdriver.chrome.driver", "/home/shanky/Personal/Online Course/Testing/Driver_File/chromedriver");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        driver= DriverFactory.getDriver();
         driver.get("https://askomdch.com");
-        System.out.println(driver.getCurrentUrl());
 
     }
 
@@ -52,6 +50,7 @@ public class MyStepDefinitions {
 
     @Given("I'm a guest customer")
     public void iMAGuestCustomer() {
+        driver= DriverFactory.getDriver();
         driver.get("https://askomdch.com");
     }
 
