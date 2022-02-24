@@ -23,6 +23,14 @@ import static org.junit.Assert.*;
 public class MyStepDefinitions {
 
     private WebDriver driver;
+    private String billingFirstName;
+    private String billingLastName;
+    private String billingAddressOne;
+    private String billingCity;
+    private String billingStateName;
+    private String billingZip;
+    private String billingEmail;
+
     @Given("I'm on the Store page")
     public void i_m_on_the_store_page() {
         driver= DriverFactory.getDriver();
@@ -47,9 +55,19 @@ public class MyStepDefinitions {
         new StorePage(driver).load("https://askomdch.com");
     }
 
+    @And("My billing details are")
+    public void myBillingDetailsAre(List<Map<String, String>> billingDetails) {
+                billingFirstName =  billingDetails.get(0).get("firstname");
+                billingLastName = billingDetails.get(0).get("lastname");
+                billingAddressOne =  billingDetails.get(0).get("address");
+                billingCity = billingDetails.get(0).get("city");
+                billingStateName = billingDetails.get(0).get("state");
+                billingZip = billingDetails.get(0).get("zip");
+                billingEmail = billingDetails.get(0).get("email");
+    }
+
     @And("I have a product in the Cart")
-    public void iHaveAProductInTheCart()
-    {
+    public void iHaveAProductInTheCart() {
         new StorePage(driver).addToCart("Blue Shoes");
     }
 
@@ -59,15 +77,15 @@ public class MyStepDefinitions {
     }
 
     @When("I provide billing details")
-    public void iProvideBillingDetails(List<Map<String, String>> billingDetails) {
+    public void iProvideBillingDetails() {
         CheckoutPage checkoutPage = new CheckoutPage(driver);
-        checkoutPage.setBillingDetails(billingDetails.get(0).get("firstname"),
-                billingDetails.get(0).get("lastname"),
-                billingDetails.get(0).get("address"),
-                billingDetails.get(0).get("city"),
-                billingDetails.get(0).get("state"),
-                billingDetails.get(0).get("zip"),
-                billingDetails.get(0).get("email"));
+        checkoutPage.setBillingDetails(billingFirstName,
+                billingLastName,
+                billingAddressOne,
+                billingCity,
+                billingStateName,
+                billingZip,
+                billingEmail);
     }
 
     @And("I place an order")
@@ -80,4 +98,6 @@ public class MyStepDefinitions {
         Assert.assertEquals("Thank you. Your order has been received.",
                 new CheckoutPage(driver).getNotice());
     }
+
+
 }
