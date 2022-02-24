@@ -1,6 +1,7 @@
 package bdd;
 
 import bdd.factory.DriverFactory;
+import bdd.pages.CartPage;
 import bdd.pages.StorePage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -25,7 +26,6 @@ public class MyStepDefinitions {
     public void i_m_on_the_store_page() {
         driver= DriverFactory.getDriver();
         new StorePage(driver).load("https://askomdch.com");
-
     }
 
     @When("I add a {string} to the Cart")
@@ -35,13 +35,9 @@ public class MyStepDefinitions {
 
     @Then("I should see {int} {string} in the cart")
     public void i_should_see_in_the_cart(int quantity, String productName) {
-        By productNameFld = By.xpath(".//a[text()='Blue Shoes']");
-        String actualProductName = driver.findElement(productNameFld).getText();
-        By productQuantityFld = By.cssSelector("input[type=\"number\"]");
-        String actualProductQuantity = driver.findElement(productQuantityFld).getAttribute("value");
-        assertEquals(productName, actualProductName);
-        assertEquals(quantity, Integer.parseInt(actualProductQuantity));
-        driver.close();
+        CartPage cartPage = new CartPage(driver);
+        assertEquals(productName, cartPage.getProductName());
+        assertEquals(quantity, cartPage.getProductQuantity());
     }
 
     @Given("I'm a guest customer")
