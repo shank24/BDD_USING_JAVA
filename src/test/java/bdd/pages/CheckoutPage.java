@@ -1,6 +1,7 @@
 package bdd.pages;
 
 
+import bdd.domainobjects.BillingDetails;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -89,17 +90,14 @@ public class CheckoutPage extends BasePage{
                 enterBillingEmail(billingDetails.getBillingEmail());
     }*/
 
-    public CheckoutPage setBillingDetails(String billingFirstName,String billingLastName,
-                                          String billingAddressOne, String billingCity,
-                                          String billingStateName, String billingZip,
-                                          String billingEmail) {
-        return enterBillingFirstName(billingFirstName).
-                enterBillingLastName(billingLastName).
-                enterBillingAddressLineOne(billingAddressOne).
-                enterBillingCity(billingCity).
-                selectBillingState(billingStateName).
-                enterBillingZip(billingZip).
-                enterBillingEmail(billingEmail);
+    public CheckoutPage setBillingDetails(BillingDetails billingDetails) {
+        return enterBillingFirstName(billingDetails.getBillingFirstName()).
+                enterBillingLastName(billingDetails.getBillingLastName()).
+                enterBillingAddressLineOne(billingDetails.getBillingAddressOne()).
+                enterBillingCity(billingDetails.getBillingCity()).
+                selectBillingState(billingDetails.getBillingStateName()).
+                enterBillingZip(billingDetails.getBillingZip()).
+                enterBillingEmail(billingDetails.getBillingEmail());
     }
 
     public CheckoutPage placeOrder(){
