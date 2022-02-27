@@ -7,7 +7,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class DriverFactory {
     private static WebDriver driver;
 
-    public static WebDriver initializeDriver(String browser){
+    public static WebDriver initializeDriver(String browser) {
         switch (browser) {
             case "chrome":
                 System.setProperty("webdriver.chrome.driver", "/home/shanky/Personal/Online Course/Testing/Driver_File/chromedriver");
@@ -26,7 +26,7 @@ public class DriverFactory {
         return driver;
     }
 
-    public static WebDriver getDriver(){
+    public static WebDriver getDriver() {
         return driver;
     }
 }
