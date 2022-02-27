@@ -1,6 +1,7 @@
 package bdd;
 
 import bdd.domainobjects.BillingDetails;
+import bdd.domainobjects.Product;
 import bdd.factory.DriverFactory;
 import bdd.pages.CartPage;
 import bdd.pages.CheckoutPage;
@@ -25,15 +26,15 @@ public class MyStepDefinitions {
         new StorePage(driver).load("https://askomdch.com");
     }
 
-    @When("I add a {string} to the Cart")
-    public void i_add_a_to_the_cart(String productName) {
-        new StorePage(driver).addToCart(productName);
+    @When("I add a {product} to the Cart")
+    public void i_add_a_to_the_cart(Product product) {
+        new StorePage(driver).addToCart(product.getName());
     }
 
-    @Then("I should see {int} {string} in the cart")
-    public void i_should_see_in_the_cart(int quantity, String productName) {
+    @Then("I should see {int} {product} in the cart")
+    public void i_should_see_in_the_cart(int quantity, Product product) {
         CartPage cartPage = new CartPage(driver);
-        assertEquals(productName, cartPage.getProductName());
+        assertEquals(product.getName(), cartPage.getProductName());
         assertEquals(quantity, cartPage.getProductQuantity());
     }
 

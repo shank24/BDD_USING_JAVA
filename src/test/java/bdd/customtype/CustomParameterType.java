@@ -9,6 +9,6 @@ public class CustomParameterType {
     // product
     @ParameterType(".*")
     public Product product(String name){
-
+        return  new Product(name.replace("\"",""));
     }
 }
