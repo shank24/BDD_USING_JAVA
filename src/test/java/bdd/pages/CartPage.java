@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class CartPage extends BasePage {
 
-    @FindBy(xpath = "//a[text()=\"Blue Shoes\"]")
+    @FindBy(css = "td[class='product-name'] a")
     private WebElement productNameFld;
 
     @FindBy(css = "input[type=\"number\"]")
