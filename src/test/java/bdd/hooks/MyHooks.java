@@ -10,8 +10,9 @@ public class MyHooks {
     private WebDriver driver;
 
     @Before
-    public void before() {
-        driver = DriverFactory.initializeDriver();
+    public void before()
+    {
+        driver = DriverFactory.initializeDriver(System.getProperty("browser", "chrome"));
     }
 
     @After
