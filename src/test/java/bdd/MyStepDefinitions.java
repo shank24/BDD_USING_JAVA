@@ -6,6 +6,7 @@ import bdd.factory.DriverFactory;
 import bdd.pages.CartPage;
 import bdd.pages.CheckoutPage;
 import bdd.pages.StorePage;
+import bdd.utils.ConfigLoader;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -23,7 +24,7 @@ public class MyStepDefinitions {
     @Given("I'm on the Store page")
     public void i_m_on_the_store_page() {
         driver = DriverFactory.getDriver();
-        new StorePage(driver).load("https://askomdch.com/store");
+        new StorePage(driver).load("/store");
     }
 
     @When("I add a {product} to the Cart")
@@ -41,7 +42,7 @@ public class MyStepDefinitions {
     @Given("I'm a guest customer")
     public void iMAGuestCustomer() {
         driver = DriverFactory.getDriver();
-        new StorePage(driver).load("https://askomdch.com");
+        new StorePage(driver).load("/store");
     }
 
     @And("My billing details are")

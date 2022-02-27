@@ -1,5 +1,6 @@
 package bdd.pages;
 
+import bdd.utils.ConfigLoader;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -16,7 +17,8 @@ public class BasePage {
         PageFactory.initElements(driver,this);
     }
 
-    public void load(String url){
-        driver.get(url);
+    public void load(String endPoint)
+    {
+        driver.get(ConfigLoader.getInstance().getBaseUrl() + endPoint);
     }
 }
