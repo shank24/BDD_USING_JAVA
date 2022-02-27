@@ -1,5 +1,6 @@
 package bdd;
 
+import bdd.constants.EndPoint;
 import bdd.domainobjects.BillingDetails;
 import bdd.domainobjects.Product;
 import bdd.factory.DriverFactory;
@@ -24,7 +25,7 @@ public class MyStepDefinitions {
     @Given("I'm on the Store page")
     public void i_m_on_the_store_page() {
         driver = DriverFactory.getDriver();
-        new StorePage(driver).load("/store");
+        new StorePage(driver).load(EndPoint.STORE.url);
     }
 
     @When("I add a {product} to the Cart")
@@ -42,7 +43,7 @@ public class MyStepDefinitions {
     @Given("I'm a guest customer")
     public void iMAGuestCustomer() {
         driver = DriverFactory.getDriver();
-        new StorePage(driver).load("/store");
+        new StorePage(driver).load(EndPoint.STORE.url);
     }
 
     @And("My billing details are")
