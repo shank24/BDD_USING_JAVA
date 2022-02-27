@@ -23,7 +23,7 @@ public class MyStepDefinitions {
     @Given("I'm on the Store page")
     public void i_m_on_the_store_page() {
         driver = DriverFactory.getDriver();
-        new StorePage(driver).load("https://askomdch.com");
+        new StorePage(driver).load("https://askomdch.com/store");
     }
 
     @When("I add a {product} to the Cart")
