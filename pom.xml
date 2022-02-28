@@ -39,11 +39,11 @@
             <version>7.2.3</version>
         </dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-testng</artifactId>
             <version>7.2.3</version>
-        </dependency>
+        </dependency>-->
 
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
@@ -79,7 +79,7 @@
                     <version>3.0.0-M5</version>
                     <configuration>
                         <parallel>methods</parallel>
-                        <threadCount>2</threadCount>
+                        <threadCount>3</threadCount>
                     </configuration>
                 </plugin>
 

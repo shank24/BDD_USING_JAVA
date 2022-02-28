@@ -30,6 +30,7 @@ public class MyStepDefinitions {
 
     @When("I add a {product} to the Cart")
     public void i_add_a_to_the_cart(Product product) {
+
         new StorePage(driver).addToCart(product.getName());
     }
 
