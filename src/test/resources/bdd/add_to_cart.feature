@@ -1,7 +1,7 @@
+#For Junit
 #Feature file will run in parallel,
 # and Scenario runs in sequential order,
 # when using surefire-plugin.
-
 
 Feature: Add to cart
 
@@ -13,3 +13,8 @@ Feature: Add to cart
       | product_name |
       | Blue Shoes   |
       | Basic Blue Jeans |
+
+
+#For Test NG
+#Scenarios and 'Scenario-outline' are executed
+# in multiple threads in parallel.

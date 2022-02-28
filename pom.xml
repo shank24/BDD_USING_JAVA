@@ -33,17 +33,17 @@
             <version>4.1.2</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
-        <dependency>
+        <!--<dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
             <version>7.2.3</version>
-        </dependency>
+        </dependency>-->
 
-        <!--<dependency>
+        <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-testng</artifactId>
             <version>7.2.3</version>
-        </dependency>-->
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
@@ -51,6 +51,12 @@
             <artifactId>lombok</artifactId>
             <version>1.18.22</version>
             <!--<scope>provided</scope>-->
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>
@@ -77,10 +83,13 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>3.0.0-M5</version>
-                    <configuration>
+
+                    <!--Not required while running with TestNg -->
+                    <!--<configuration>
                         <parallel>methods</parallel>
                         <threadCount>3</threadCount>
-                    </configuration>
+                    </configuration>-->
+
                 </plugin>
 
                 <plugin>

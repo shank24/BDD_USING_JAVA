@@ -7,7 +7,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class DriverFactory {
     //ThreadLocal Info
     //Each thread will gets it own copy of the driver object
-    private static ThreadLocal <WebDriver> driver = new ThreadLocal<>();
+    private static final ThreadLocal
+            <WebDriver> driver = new ThreadLocal<>();
 
     public static WebDriver initializeDriver(String browser) {
         WebDriver driver;
