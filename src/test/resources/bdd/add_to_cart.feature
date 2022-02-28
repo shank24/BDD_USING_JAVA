@@ -1,3 +1,8 @@
+#Feature file will run in parallel,
+# and Scenario runs in sequential order,
+# when using surefire-plugin.
+
+
 Feature: Add to cart
 
   Scenario Outline: Add One quantity from store
