@@ -27,6 +27,6 @@ public class StorePage extends BasePage {
         By addingToCart = By.cssSelector("a[aria-label='Add “" + productName + "” to your cart']");
         wait.until(ExpectedConditions.visibilityOf(titleTxt));
         wait.until(ExpectedConditions.elementToBeClickable(addingToCart)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(viewCartLink));
+        wait.until(ExpectedConditions.elementToBeClickable(viewCartLink)).click();
     }
 }

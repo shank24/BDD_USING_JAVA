@@ -15,6 +15,6 @@ Feature: Add to cart
       | Basic Blue Jeans |
 
 
-#For Test NG
+#For Test NG & CLIs
 #Scenarios and 'Scenario-outline' are executed
 # in multiple threads in parallel.
