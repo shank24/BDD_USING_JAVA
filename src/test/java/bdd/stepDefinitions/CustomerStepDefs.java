@@ -5,6 +5,7 @@ import bdd.context.TestContext;
 import bdd.domainobjects.BillingDetails;
 import bdd.pages.CartPage;
 import bdd.pages.CheckoutPage;
+import bdd.pages.PageFactoryManager;
 import bdd.pages.StorePage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -14,12 +15,12 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
 public class CustomerStepDefs {
-    private final WebDriver driver;
     private final TestContext context;
+    private final StorePage storePage;
 
     public CustomerStepDefs(TestContext context) {
-        driver= context.driver;
-        this.context=context;
+        this.context = context;
+        storePage = PageFactoryManager.getStorePage(context.driver);
     }
 
     @And("My billing details are")
@@ -29,7 +30,7 @@ public class CustomerStepDefs {
 
     @Given("I'm a guest customer")
     public void iMAGuestCustomer() {
-        new StorePage(driver).load(EndPoint.STORE.url);
+        storePage.load(EndPoint.STORE.url);
     }
 
 }

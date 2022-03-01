@@ -5,6 +5,7 @@ import bdd.domainobjects.BillingDetails;
 import bdd.domainobjects.Product;
 import bdd.pages.CartPage;
 import bdd.pages.CheckoutPage;
+import bdd.pages.PageFactoryManager;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -14,33 +15,28 @@ import org.openqa.selenium.WebDriver;
 import static org.junit.Assert.assertEquals;
 
 public class CheckoutStepDefs {
-    private final WebDriver driver;
     private final TestContext context;
+    private final CheckoutPage checkoutPage;
 
     public CheckoutStepDefs(TestContext context) {
-        driver= context.driver;
-        this.context=context;
+        this.context = context;
+        checkoutPage = PageFactoryManager.getCheckoutPage(context.driver);
     }
 
-    @And("I'm on the checkout page")
-    public void iMOnTheCheckoutPage() {
-        new CartPage(driver).checkout();
-    }
 
     @When("I provide billing details")
     public void iProvideBillingDetails() {
-        CheckoutPage checkoutPage = new CheckoutPage(driver);
         checkoutPage.setBillingDetails(context.billingDetails);
     }
 
     @And("I place an order")
     public void iPlaceAnOrder() {
-        new CheckoutPage(driver).placeOrder();
+        checkoutPage.placeOrder();
     }
 
     @Then("The order should be placed successfully")
     public void theOrderShouldBePlacedSuccessfully() {
-        Assert.assertEquals("Thank you. Your order has been received.", new CheckoutPage(driver).getNotice());
+        Assert.assertEquals("Thank you. Your order has been received.", checkoutPage.getNotice());
     }
 
 }
