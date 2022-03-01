@@ -6,6 +6,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 
 
 @CucumberOptions(
+        plugin = {"html:target/cucumber/cucumber.html"},
         glue = {"bdd"},
         features = "src/test/resources/bdd"
 )
