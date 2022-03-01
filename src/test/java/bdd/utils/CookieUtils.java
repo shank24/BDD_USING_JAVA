@@ -1,7 +1,7 @@
 package bdd.utils;
 
-import io.restassured.http.Cookie;
 import io.restassured.http.Cookies;
+import org.openqa.selenium.Cookie;
 
 import java.util.ArrayList;
 import java.util.List;
