@@ -1,13 +1,13 @@
 package bdd;
 
 import bdd.constants.EndPoint;
+import bdd.context.TestContext;
 import bdd.domainobjects.BillingDetails;
 import bdd.domainobjects.Product;
 import bdd.factory.DriverFactory;
 import bdd.pages.CartPage;
 import bdd.pages.CheckoutPage;
 import bdd.pages.StorePage;
-import bdd.utils.ConfigLoader;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -21,6 +21,14 @@ public class MyStepDefinitions {
 
     private WebDriver driver;
     private BillingDetails billingDetails;
+
+    // Pico container will not create the other instance of the
+    // TestContext class, it will be going to inject it already
+    // created instance of it in the MyStepDefinitions class.
+
+    public MyStepDefinitions(TestContext context) {
+        System.out.println("STEP DEF DI : SCENARIO NAME "  + context.scenarioName );
+    }
 
     @Given("I'm on the Store page")
     public void i_m_on_the_store_page() {

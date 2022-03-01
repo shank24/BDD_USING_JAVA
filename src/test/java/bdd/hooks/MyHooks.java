@@ -1,5 +1,6 @@
 package bdd.hooks;
 
+import bdd.context.TestContext;
 import bdd.factory.DriverFactory;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -9,10 +10,16 @@ import org.openqa.selenium.WebDriver;
 
 public class MyHooks {
     private WebDriver driver;
+    private final TestContext context;
 
+    public MyHooks(TestContext context){
+        this.context = context;
+    }
     @Before
     public void before(Scenario scenario)
     {
+        context.scenarioName = scenario.getName();
+        System.out.println("DI: SCENARIO NAME:  " + context.scenarioName);
         System.out.println("BEFORE THREAD ID ::-> " + Thread.currentThread().getId() + ","
                 + "SCENARIO NAME ::->" + scenario.getName());
                 
