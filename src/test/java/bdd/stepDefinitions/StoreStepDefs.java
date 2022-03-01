@@ -1,5 +1,6 @@
 package bdd.stepDefinitions;
 
+import bdd.apis.CartApi;
 import bdd.constants.EndPoint;
 import bdd.context.TestContext;
 import bdd.domainobjects.Product;
@@ -30,7 +31,11 @@ public class StoreStepDefs {
 
     @And("I have a product in the Cart")
     public void iHaveAProductInTheCart() {
-        storePage.addToCart("Blue Shoes");
+        CartApi cartApi = new CartApi(context.cookies.getCookies());
+        cartApi.addToCart(1215,1);
+        context.cookies.setCookies(cartApi.getCookies());
+        context.cookies.injectCookiesToBrowser(context.driver);
+        //storePage.addToCart("Blue Shoes");
     }
 
 }

@@ -1,5 +1,6 @@
 package bdd.stepDefinitions;
 
+import bdd.constants.EndPoint;
 import bdd.context.TestContext;
 import bdd.domainobjects.BillingDetails;
 import bdd.domainobjects.Product;
@@ -37,6 +38,12 @@ public class CheckoutStepDefs {
     @Then("The order should be placed successfully")
     public void theOrderShouldBePlacedSuccessfully() {
         Assert.assertEquals("Thank you. Your order has been received.", checkoutPage.getNotice());
+    }
+
+    @And("I'm on the checkout page")
+    public void iMOnTheCheckoutPage()
+    {
+        checkoutPage.load(EndPoint.CHECKOUT.url);
     }
 
 }

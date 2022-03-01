@@ -21,8 +21,5 @@ public class CartStepDefs {
         assertEquals(quantity, cartPage.getProductQuantity());
     }
 
-    @And("I'm on the checkout page")
-    public void iMOnTheCheckoutPage() {
-        cartPage.checkout();
-    }
+
 }
