@@ -18,12 +18,12 @@ public class MyHooks {
     @Before
     public void before(Scenario scenario)
     {
-        context.scenarioName = scenario.getName();
-        System.out.println("DI: SCENARIO NAME:  " + context.scenarioName);
         System.out.println("BEFORE THREAD ID ::-> " + Thread.currentThread().getId() + ","
                 + "SCENARIO NAME ::->" + scenario.getName());
-                
         driver = DriverFactory.initializeDriver(System.getProperty("browser", "chrome"));
+        //Here we are setting our driver object,
+        // which we want to inject in diff classes.
+        context.driver=driver;
     }
 
     @After
