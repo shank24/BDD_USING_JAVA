@@ -21,5 +21,4 @@ public class CartStepDefs {
         assertEquals(quantity, cartPage.getProductQuantity());
     }
 
-
 }
