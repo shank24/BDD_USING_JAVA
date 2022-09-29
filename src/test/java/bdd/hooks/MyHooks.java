@@ -15,6 +15,7 @@ public class MyHooks {
     public MyHooks(TestContext context){
         this.context = context;
     }
+
     @Before
     public void before(Scenario scenario)
     {
@@ -30,6 +31,13 @@ public class MyHooks {
     public void after(Scenario scenario) {
         System.out.println("AFTER THREAD ID ::-> " + Thread.currentThread().getId() + ","
                 + "SCENARIO NAME ::->" + scenario.getName());
+        System.out.println("SCENARIO LINE ::->" + scenario.getLine());
+        System.out.println("SCENARIO TAGS ::->" + scenario.getSourceTagNames());
+        System.out.println("SCENARIO STATUS ::->" + scenario.getStatus());
+        System.out.println("SCENARIO URI ::->" + scenario.getUri());
+        System.out.println("SCENARIO IS_FAILED ::->" + scenario.isFailed());
+        System.out.println("SCENARIO ID ::->" + scenario.getId());
+
         driver.quit();
     }
 }
