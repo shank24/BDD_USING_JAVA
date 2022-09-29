@@ -6,6 +6,7 @@
 Feature: Data Table Demo
 
   Rule: Data Table
+    @scenario3
   Scenario: Single Row With No Header
     Given my credentials
     | John | 123 |

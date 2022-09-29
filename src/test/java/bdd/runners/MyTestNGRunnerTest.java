@@ -14,7 +14,7 @@ import static io.cucumber.testng.CucumberOptions.SnippetType.CAMELCASE;
         snippets = CAMELCASE,
         dryRun = false,
         monochrome = true,
-        tags = "@scenario1 or @scenario2"
+        tags = "@scenario3"
 )
 public class MyTestNGRunnerTest extends AbstractTestNGCucumberTests{
 
