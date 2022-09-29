@@ -12,7 +12,9 @@ import static io.cucumber.testng.CucumberOptions.SnippetType.CAMELCASE;
         glue = {"bdd"},
         features = "src/test/resources/bdd",
         snippets = CAMELCASE,
-        dryRun = false
+        dryRun = false,
+        monochrome = true,
+        tags = "@scenario1 and @scenario2"
 )
 public class MyTestNGRunnerTest extends AbstractTestNGCucumberTests{
 

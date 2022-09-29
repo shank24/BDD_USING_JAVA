@@ -1,5 +1,6 @@
 Feature: Place an order
 
+    @scenario2
   Scenario: using default payment option
     Given I'm a guest customer
     And My billing details are
