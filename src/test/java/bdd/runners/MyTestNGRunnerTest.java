@@ -11,7 +11,8 @@ import static io.cucumber.testng.CucumberOptions.SnippetType.CAMELCASE;
         plugin = {"html:target/cucumber/cucumber.html"},
         glue = {"bdd"},
         features = "src/test/resources/bdd",
-        snippets = CAMELCASE
+        snippets = CAMELCASE,
+        dryRun = false
 )
 public class MyTestNGRunnerTest extends AbstractTestNGCucumberTests{
 

@@ -9,6 +9,7 @@ Feature: Add to cart
     Given I'm on the Store page
     When I add a "<product_name>" to the Cart
     Then I should see 1 "<product_name>" in the cart
+    Then Dummy Scenario
     Examples:
       | product_name |
       | Blue Shoes   |
